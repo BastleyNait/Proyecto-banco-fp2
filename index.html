@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<!-- La cabecera del html-->
+	<meta charset="utf-8"> 	
+	<title>Banco </title>
+	<!-- El css-->
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<center>
+	<!-- El formulario para mandar la validacion de datos -->
+	<form method=POST action="./buscar.pl">
+			<h4> Nombre 
+			<input type=text name=nombre size=42 maxlength=45 value="" style="height: 30px;" required></h4> 
+			<h4> Contraseña 
+			<input type=password name=contra size=40 maxlength=40 value="" style="height: 30px;" required></h4> 
+			<br>
+			<input type=submit value="buscar" style="height: 30px;"><br><br>
+	</form>
+	<!-- Aqui termina  validacion de datos-->
+	<!-- El formulario para registrarse -->
+	<form method=POST action="./crear.pl">
+			<h4> Nombre del usuario
+			<input type=text name=nombre size=42 maxlength=45 value="" style="height: 30px;" required></h4> 
+			<h4> Contraseña nueva
+			<input type=password name=contra size=40 maxlength=40 value="" style="height: 30px;" required></h4>
+			<h4> Confirmar contraseña 
+			<input type=password name=contra2 size=40 maxlength=40 value="" style="height: 30px;" required></h4> 			
+			<br>
+			<input type=submit value="registrarse" style="height: 30px;"><br><br>
+	</form>
+</center>	
+</body>
+</html>
