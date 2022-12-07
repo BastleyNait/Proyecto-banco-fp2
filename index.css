@@ -1,0 +1,46 @@
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+    background: white;
+}
+
+.barra_navegacion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  
+    background: wheat;
+    padding: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    padding: 0.2em;
+}
+
+
+nav a {
+    padding: 10px;
+    transition: all .35s;
+    letter-spacing: 1px;
+}
+
+nav a:hover {
+    color: rgba(0, 0, 0, 0.293);
+}
+ 
+.logo {
+    transition: all .35s;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.logo:hover {
+    color: rgba(0, 0, 0, 0.293);
+}
+
+
