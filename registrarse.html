@@ -6,61 +6,37 @@
     <title>Banco</title>
     <!-- El css-->
     <link rel="stylesheet" type="text/css" href="index.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="barra_navegacion">
-      <div class="logo"><h4>LOGO</h4></div>
+		<div class="logo"><h4>LOGO</h4></div>
       <nav>
-        <a href="index.html">iniciar sesión</a>
-        <a href="registrarse.html">registrarse</a>
+        <a href="index.html"> Iniciar sesión</a>
+        <a href="registrarse.html"> Registrarse</a>
       </nav>
-    </header>
+	</header>
     <center>
-      <!-- El formulario para registrarse -->
-      <form method="POST" action="./crear.pl">
-        <h4>
-          Nombre del usuario
-        </h4>  
-          <input
-            type="text"
-            name="nombre"
-            size="42"
-            maxlength="45"
-            value=""
-            style="height: 30px"
-            required
-          />
-        <h4>
-          Contraseña nueva
-        </h4>
-          <input
-            type="password"
-            name="contra"
-            size="40"
-            maxlength="40"
-            value=""
-            style="height: 30px"
-            required
-          />
-        <h4>
-          Confirmar contraseña
-        </h4>
-          <input
-            type="password"
-            name="contra2"
-            size="40"
-            maxlength="40"
-            value=""
-            style="height: 30px"
-            required
-          />
-        <br />
-        <input
-          type="submit"
-          value="registrarse"
-          style="height: 30px"
-        />
-      </form>
+      <div class="caja">
+		<!-- El formulario para mandar la validacion de datos -->
+		<div class="contenedor">
+			<h2>Iniciar Sesión</h2>
+			<form method="POST" action="./buscar.pl">
+				<div class="input_box">
+					<input type="text" autocomplete="off" name="nombre"required/>
+					<span>Usuario</span>
+					<i></i>
+				</div>
+				<div class="input_box">
+					<input type="password" name="contra" required/>
+					<span>Contraseña</span>
+					<i></i>
+				</div>
+				<input type="submit" value="ingresar"/>  
+			  <!-- Aqui termina  validacion de datos-->
+			</form>	
+		</div>
+	  </div>
     </center>
   </body>
 </html>
