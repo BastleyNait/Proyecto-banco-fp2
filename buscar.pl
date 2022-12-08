@@ -33,27 +33,27 @@ $dbh-> disconnect ||
 warn "nFallo al desconectar.nError: $DBI::errstrn";
 ##confirma usuario
 my $error='
-<center><form method=POST action="./buscar.pl">
-			<h4> Nombre 
-			<input type=text name=nombre size=42 maxlength=45 value="" 
-			style="height: 30px;" required></h4> 
-			<h4> Contraseña 
-			<input type=password name=contra size=40 maxlength=40 value="" 
-			style="height: 30px;" required></h4> 
-			<br>
-			<input type=submit value="ejecutar" style="height: 30px;"><br><br>
-	</form>
-<h4>No existe Contraseña o usuario</h4> 
-<form method=POST action="./crear.pl">
-			<h4> Nombre del usuario
-			<input type=text name=nombre size=42 maxlength=45 value="" style="height: 30px;" required></h4> 
-			<h4> Contraseña nueva
-			<input type=password name=contra size=40 maxlength=40 value="" style="height: 30px;" required></h4>
-			<h4> Confirmar contraseña 
-			<input type=password name=contra2 size=40 maxlength=40 value="" style="height: 30px;" required></h4> 			
-			<br>
-			<input type=submit value="registrarse" style="height: 30px;"><br><br>
-	</form></center>';
+<div class="caja">
+		<!-- El formulario para mandar la validacion de datos -->
+		<div class="contenedor">
+			<h2>Iniciar Sesión</h2>
+			<form method="POST" action="./buscar.pl">
+				<div class="input_box">
+					<input type="text" autocomplete="off" name="nombre"required/>
+					<span>Usuario</span>
+					<i></i>
+				</div>
+				<div class="input_box">
+					<input type="password" name="contra" required/>
+					<span>Contraseña</span>
+					<i></i>
+				</div>
+				<input type="submit" value="ingresar"/>  
+			  <!-- Aqui termina  validacion de datos-->
+			</form>	
+		</div>
+	  </div>
+	  <br><br><br><br><h2>El usuario y/o contraseña estan equivocadas</h2>';
 my $info;
 if($nombres eq ""){$info=$error;}
 elsif($contra eq $contra1){$info='
@@ -90,17 +90,27 @@ else{$info=$error;}
 ##imprimir html
 print "Content-type: text/html\n\n";
 print <<ENDHTML;
+<!DOCTYPE html>
 <html>
-<head>
- 	<!-- La cabecera -->
-	<meta charset="utf-8"> 	
-	<title>Banco</title>
-	<!-- El css -->
-	<link rel="stylesheet" type="text/css" href="index.css">
-</head>
-<body>
+  <head>
+    <!-- La cabecera del html-->
+    <meta charset="utf-8" />
+    <title>Banco</title>
+    <!-- El css-->
+    <link rel="stylesheet" type="text/css" href="index.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="barra_navegacion">
+		<div class="logo"><h4>LOGO</h4></div>
+		<nav >
+			<a class="logo" href="index.html"> Iniciar sesión </a>
+			<a class="logo" href="registrarse.html"> Registrarse </a>
+		  </nav>
+	</header>
+    <center>
 $info
-<br>
+</center>
 </body>
 </html>
 ENDHTML
