@@ -20,6 +20,7 @@ my $error='
       <!-- El formulario para registrarse -->
       <div class="caja">
       <div class="contenedor">
+        <img id="logo" src="./imagenes/logo.png" alt="logo">
         <h2> Registrarse </h2>
       <form method="POST" action="./crear.pl">
         <div class="input_box">
@@ -42,7 +43,6 @@ my $error='
         <input class="boton"
           type="submit"
           value="Registrarse"
-          style="height: 30px"
         />
       </form>
       </div>
@@ -77,13 +77,14 @@ print <<ENDHTML;
     <meta charset="utf-8" />
     <title> Banco </title>
     <!-- El css-->
-    <link rel="stylesheet" type="text/css" href="registrarse.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+	  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="barra_navegacion">
-      <div class="logo">
-        <h4>  LOGO  </h4>
+      <div class="logo"><h4>SECURITAS <br>FINANCIAL</h4></div>
+      <img src="./imagenes/logo.png" alt="logo">
       </div>
         <nav >
           <a class="logo" href="index.html"> Iniciar sesión </a>

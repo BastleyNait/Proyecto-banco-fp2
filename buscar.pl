@@ -36,6 +36,7 @@ my $error='
 <div class="caja">
 		<!-- El formulario para mandar la validacion de datos -->
 		<div class="contenedor">
+			<img id="logo" src="./imagenes/logo.png" alt="logo">
 			<h2>Iniciar Sesión</h2>
 			<form method="POST" action="./buscar.pl">
 				<div class="input_box">
@@ -48,7 +49,7 @@ my $error='
 					<span>Contraseña</span>
 					<i></i>
 				</div>
-				<input type="submit" value="ingresar"/>  
+				<input type="submit" value="Ingresar" id="ingresar"/>  
 			  <!-- Aqui termina  validacion de datos-->
 			</form>	
 		</div>
@@ -97,12 +98,14 @@ print <<ENDHTML;
     <meta charset="utf-8" />
     <title>Banco</title>
     <!-- El css-->
-    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="barra_navegacion">
-		<div class="logo"><h4>LOGO</h4></div>
+		<div class="logo"><h4>SECURITAS <br>FINANCIAL</h4></div>
+		<img src="./imagenes/logo.png" alt="logo">
 		<nav >
 			<a class="logo" href="index.html"> Iniciar sesión </a>
 			<a class="logo" href="registrarse.html"> Registrarse </a>
