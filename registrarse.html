@@ -3,40 +3,52 @@
   <head>
     <!-- La cabecera del html-->
     <meta charset="utf-8" />
-    <title>Banco</title>
+    <title> Banco </title>
     <!-- El css-->
-    <link rel="stylesheet" type="text/css" href="index.css" />
-	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="registrarse.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="barra_navegacion">
-		<div class="logo"><h4>LOGO</h4></div>
-      <nav>
-        <a href="index.html"> Iniciar sesión</a>
-        <a href="registrarse.html"> Registrarse</a>
-      </nav>
-	</header>
+      <div class="logo">
+        <h4>  LOGO  </h4>
+      </div>
+        <nav >
+          <a class="logo" href="index.html"> Iniciar sesión </a>
+          <a class="logo" href="registrarse.html"> Registrarse </a>
+        </nav>
+    </header>
     <center>
+      <!-- El formulario para registrarse -->
       <div class="caja">
-		<!-- El formulario para mandar la validacion de datos -->
-		<div class="contenedor">
-			<h2>Iniciar Sesión</h2>
-			<form method="POST" action="./buscar.pl">
-				<div class="input_box">
-					<input type="text" autocomplete="off" name="nombre"required/>
-					<span>Usuario</span>
+      <div class="contenedor">
+        <h2> Registrarse </h2>
+      <form method="POST" action="./crear.pl">
+        <div class="input_box">
+          <input type="text" autocomplete="off" name="nombre" required />
+          <span> Nombre del Usuario </span>
+          <i></i>
+        </div>
+        <div class="input_box">
+          <input type="password" autocomplete="off" name="contra" required />
+          <span> Contraseña Nueva </span>
+          <i></i>
+        </div>
+        <div class="input_box">
+          <input type="password" name="contra2" required />
+          <span> Confirmar Contraseña </span>
 					<i></i>
-				</div>
-				<div class="input_box">
-					<input type="password" name="contra" required/>
-					<span>Contraseña</span>
-					<i></i>
-				</div>
-				<input type="submit" value="ingresar"/>  
-			  <!-- Aqui termina  validacion de datos-->
-			</form>	
-		</div>
-	  </div>
+        </div>  
+          
+        <br/>
+        <input class="boton"
+          type="submit"
+          value="Registrarse"
+          style="height: 30px"
+        />
+      </form>
+      </div>
+      </div>
     </center>
   </body>
 </html>
