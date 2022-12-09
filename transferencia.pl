@@ -28,18 +28,31 @@ my $saldoR;
 my $saldoReal;
 my $info;
 my $error=
-'<form method=POST action="./transferencia.pl">
-			<h4>nombre a quien transfira
-			<input type=text name=nombreRecibir size=42 maxlength=45 value="" 
-			style="height: 30px;" required></h4>
-			<h4>cantidad <input type=number name=cantidad step=0.1 min=0 size=42 maxlength=45 value="" 
-			style="height: 30px;" required>
-			<input type=submit value="transferir" style="height: 30px;"></h4>
-			<input type=text style="display:none" name=nombre value='.$nombre.'>
-			<input type=text style="display:none" name=contra value='.$contra.'>
-			<input type=text style="display:none" name=id value='.$id.'>
-			<input type=text style="display:none" name=saldo value='.$saldo.'>
-			</form>';
+'<div class="caja" id="inicio_sesion">
+<!-- Transferencia-->
+		<div class="contenedor" id="demo">
+			<img id="logo" src="./imagenes/logo.png" alt="logo">
+			<h2>Transferencia</h2>
+			<form method="POST" action="./transferencia.pl">
+					<input type=text style="display:none" name=nombre value='.$nombre.'>
+					<input type=text style="display:none" name=contra value='.$contra.'>
+					<input type=text style="display:none" name=id value='.$id.'>
+					<input type=text style="display:none" name=saldo value='.$saldo.'>
+				<div class="input_box">
+					<input type=text autocomplete="off" name="nombreRecibir" required/>
+					<span>Usuario a quien tranferir</span>
+					<i></i>
+				</div>	
+				<div class="input_box">
+					<input type=number autocomplete="off" step=0.1 min=0 name="cantidad" required/>
+					<span>Cantidad</span>
+					<i></i>
+				</div>
+				<input type="submit" value="Transferir" id="ingresar"/>  
+			  <!-- Aqui termina  validacion de datos-->
+			</form>	
+		</div>
+	  </div>';
 $sth->execute($nombreR);
 while( my @row = $sth->fetchrow_array ) {
 $idR=$row[0];
@@ -53,15 +66,15 @@ $saldoReal=$row[3];
 }
 $sth->finish;
 my $diferencia=$saldoReal-$cantidad;
-if($nombresR eq ""){$info=$error."usario no exite";}
-elsif( $diferencia<0){$info=$error."no hay suficiente saldo <br> Su saldo es ".$saldoReal;}
+if($nombresR eq ""){$info=$error."<br><br><br><br><h2>usario no exite</h2>";}
+elsif( $diferencia<0){$info=$error."<br><br><br><br><h2>no hay suficiente saldo <br> Su saldo es ".$saldoReal."</h2>";}
 else{
 	my $sth1 = $dbh->prepare("UPDATE cuentas SET Saldo=? where nombre=?");
 	my $total = $saldoR + $cantidad;
 	$sth1->execute($total,$nombresR);
 	$sth1->execute($diferencia,$nombre);
 	$sth1->finish;
-	$info="Se completo la transferncia de ".$cantidad." a ".$nombresR;
+	$info="<h2>Se completo la transferencia de ".$cantidad." a ".$nombresR."</h2>";
 	}
 ##Nos desconectamos de la BD. Mostramos un mensaje en caso de error
 $dbh-> disconnect ||
@@ -70,17 +83,26 @@ warn "nFallo al desconectar.nError: $DBI::errstrn";
 print "Content-type: text/html\n\n";
 print <<ENDHTML;
 <html>
-<head>
- 	<!-- La cabecera -->
-	<meta charset="utf-8"> 	
-	<title>Banco</title>
-	<!-- El css -->
-	<link rel="stylesheet" type="text/css" href="index.css">
-</head>
-<body>
-<center>
+  <head>
+    <!-- La cabecera del html-->
+    <meta charset="utf-8" />
+    <title>Banco</title>
+    <!-- El css-->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="barra_navegacion">
+		<div class="logo"><h4>SECURITAS <br>FINANCIAL</h4></div>
+		<img src="./imagenes/logo.png" alt="logo">
+		<nav >
+			<a class="logo" href="index.html"> Iniciar sesión </a>
+			<a class="logo" href="registrarse.html"> Registrarse </a>
+		  </nav>
+	</header>
+    <center>
 $info
-<h5><a href="index.html">regresar al principal</a> </h5>
 </center>
 </body>
 </html>

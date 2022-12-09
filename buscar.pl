@@ -33,60 +33,62 @@ $dbh-> disconnect ||
 warn "nFallo al desconectar.nError: $DBI::errstrn";
 ##confirma usuario
 my $error='
-<div class="caja">
+      <div class="caja" id="inicio_sesion">
 		<!-- El formulario para mandar la validacion de datos -->
 		<div class="contenedor">
 			<img id="logo" src="./imagenes/logo.png" alt="logo">
-			<h2>Iniciar Sesión</h2>
+			<h2>Operaciones</h2>
 			<form method="POST" action="./buscar.pl">
+					<input type=text style="display:none" name=nombre value='.$nombres.'>
+					<input type=text style="display:none" name=contra value='.$contra.'>
+					<input type=text style="display:none" name=id value='.$id.'>
+					<input type=text style="display:none" name=saldo value='.$saldo.'>
 				<div class="input_box">
-					<input type="text" autocomplete="off" name="nombre"required/>
-					<span>Usuario</span>
+					<input type=number autocomplete="off" step=0.1 min=0 name="nombre"required/>
+					<span>Cantidad</span>
+					<i></i>
+				</div>
+				<div class="input_box" >
+						<select name="operacion" class="input_box">
+						<option>Depósito</option>
+						<option>Retiro</option>
+						</select>
 					<i></i>
 				</div>
 				<div class="input_box">
-					<input type="password" name="contra" required/>
-					<span>Contraseña</span>
-					<i></i>
+					<button type="button" id="transferir" onclick="document.getElementById('demo').style.display='block'">Transferir</button>
 				</div>
-				<input type="submit" value="Ingresar" id="ingresar"/>  
+				<input type="submit" value="Ejecutar" id="ingresar"/>  
 			  <!-- Aqui termina  validacion de datos-->
 			</form>	
 		</div>
-	  </div>
-	  <br><br><br><br><h2>El usuario y/o contraseña estan equivocadas</h2>';
-my $info;
-if($nombres eq ""){$info=$error;}
-elsif($contra eq $contra1){$info='
-<center><form method=POST action="./operaciones.pl">
-			<input type=text style="display:none" name=nombre value='.$nombres.'>
-			<input type=text style="display:none" name=contra value='.$contra.'>
-			<input type=text style="display:none" name=id value='.$id.'>
-			<input type=text style="display:none" name=saldo value='.$saldo.'>
-			<h4> Cantidad
-			<input type=number name=cantidad step=0.1 min=0 size=42 maxlength=45 value="" 
-			style="height: 30px;" required></h4> 
-			<br>
-			<select name="operacion" size="1">
-			<option>Deposito</option>
-			<option>Retiro</option>
-			</select>
-			<input type=submit value="ejecutar" style="height: 30px;"><br><br>
-			</form>
-			<h4>Su saldo es de '.$saldo.'</h4>
-			<form method=POST action="./transferencia.pl">
-			<h4>nombre a quien transfira
-			<input type=text name=nombreRecibir size=42 maxlength=45 value="" 
-			style="height: 30px;" required></h4>
-			<h4>cantidad <input type=number name=cantidad step=0.1 min=0 size=42 maxlength=45 value="" 
-			style="height: 30px;" required>
-			<input type=submit value="transferir" style="height: 30px;"></h4>
-			<input type=text style="display:none" name=nombre value='.$nombres.'>
-			<input type=text style="display:none" name=contra value='.$contra.'>
-			<input type=text style="display:none" name=id value='.$id.'>
-			<input type=text style="display:none" name=saldo value='.$saldo.'>
-			</form>
-	</center>';}
+		<!-- Transferencia-->
+		<div class="contenedor" id="demo">
+			<img id="logo" src="./imagenes/logo.png" alt="logo">
+			<h2>Transferencia</h2>
+			<form method="POST" action="./buscar.pl">
+					<input type=text style="display:none" name=nombre value='.$nombres.'>
+					<input type=text style="display:none" name=contra value='.$contra.'>
+					<input type=text style="display:none" name=id value='.$id.'>
+					<input type=text style="display:none" name=saldo value='.$saldo.'>
+				<div class="input_box">
+					<input type=text autocomplete="off" name="nombreRecibir" required/>
+					<span>Usuario a quien tranferir</span>
+					<i></i>
+				</div>	
+				<div class="input_box">
+					<input type=number autocomplete="off" step=0.1 min=0 name="nombre" required/>
+					<span>Cantidad</span>
+					<i></i >
+				</div>
+				<div class="input_box" id="transferir">
+					<button type="button" id="operaciones" onclick="document.getElementById('demo').style.display='none'">Operaciones</button>
+				</div>
+				<input type="submit" value="Transferir" id="ingresar"/>  
+			  <!-- Aqui termina  validacion de datos-->
+			</form>	
+		</div>
+	  </div>';}
 else{$info=$error;}
 ##imprimir html
 print "Content-type: text/html\n\n";

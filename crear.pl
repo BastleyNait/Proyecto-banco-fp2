@@ -43,6 +43,7 @@ my $error='
         <input class="boton"
           type="submit"
           value="Registrarse"
+		  id="registrarse"
         />
       </form>
       </div>
@@ -56,15 +57,15 @@ $nombres=$row[1];
 $sth->finish;
 my $info;
 my $largoContra=length($contra);
-if($nombre eq $nombres){$info=$error."<br><br><h2>el usuario ya existe</h2>";}
-elsif($largoContra<8){$info=$error."<br><br><h2>la contraseña es muy corta minimo 8</h2>";}
+if($nombre eq $nombres){$info=$error."<br><br><br><br><h2>el usuario ya existe</h2>";}
+elsif($largoContra<8){$info=$error."<br><br><br><br><h2>la contraseña es muy corta minimo 8</h2>";}
 elsif($contra eq $contra2){
 	my $sth1 = $dbh->prepare("INSERT INTO cuentas(nombre, contra, Saldo) VALUES (?,?,?)");
 	$sth1->execute($nombre, $contra, 0);
 	$sth1->finish;
-	$info="Se creo la cuenta ".$nombre;
+	$info="<h2>Se creo la cuenta </h2>".$nombre;
 }
-else{$info=$error."las contraseñas no conciden";}
+else{$info=$error."<br><br><br><br><h2>las contraseñas no conciden</h2>";}
 ##Nos desconectamos de la BD. Mostramos un mensaje en caso de error
 $dbh-> disconnect ||
 warn "nFallo al desconectar.nError: $DBI::errstrn";
