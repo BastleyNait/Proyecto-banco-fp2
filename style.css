@@ -107,16 +107,15 @@ nav a:hover {
 
 select {
     position: relative;
+    right: 4px;
     width: 100%;
     padding: 20px 10px 10px;
     background: transparent;
     border: none;
     outline: none;
     font-size: 1em;
-    letter-spacing: 0.05em;
     color: #8f8f8f;
     font-family: 'Montserrat', sans-serif;
-
 }
 
 .input_box span {
@@ -195,7 +194,7 @@ select {
 #transferir {
     position: absolute;
     right: 67%;
-    top: 34px;
+    top: 33px;
     background: transparent;
     border-radius: 10px;
     width: 100px;
@@ -212,8 +211,8 @@ select {
 
 #operaciones {
     position: absolute;
-    top: 320px;
-    left: 15px;
+    top: 322px;
+    left: 13px;
     background: transparent;
     border-radius: 10px;
     width: 100px;
