@@ -5,10 +5,16 @@
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0px;
+    box-sizing: border-box;
     background-image: url(./imagenes/fondo.png);
 }
 
+.separacion {
+    height: 75px;
+}
 .barra_navegacion {
+    position: fixed;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;  
@@ -26,6 +32,12 @@ a {
     text-decoration: none;
     color: black;
     padding: 0.2em;
+}
+
+.logo a {
+    text-decoration: none;
+    color: black;
+    padding: 0;
 }
 
 
@@ -54,7 +66,7 @@ nav a:hover {
 
 
 .contenedor {
-    background: rgb(47, 40, 32);
+    background: #2f2820;
     position: absolute;
     inset: 2px;
     border-radius: 8px;
@@ -144,7 +156,7 @@ select {
     border-radius: 10px;
     width: 100px;
     height: 35px;
-    color: wheat;
+    color: #f5deb3;
     border-width: 1px;
     border-color: wheat;
     cursor: pointer;
@@ -246,6 +258,35 @@ input[type="submit"]:hover {
     transition: 0.5s;
     pointer-events: none;
 }
+
+/*Estilos extra index*/
+
+section h3 {
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 5px ;
+}
+
+section p {
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 40px;
+    background: #2f2820a6;
+    gap: 20px;
+}
+
+.img_index {
+    height: 200px;
+}
+
+/*-----------------------------------/
 
 /*Responsive*/
 

@@ -33,6 +33,7 @@ $dbh-> disconnect ||
 warn "nFallo al desconectar.nError: $DBI::errstrn";
 ##confirma usuario
 my $error='
+	  <div class="separacion"></div>
       <div class="caja" id="inicio_sesion">
 		<!-- El formulario para mandar la validacion de datos -->
 		<div class="contenedor">
@@ -106,10 +107,10 @@ print <<ENDHTML;
   </head>
   <body>
     <header class="barra_navegacion">
-		<div class="logo"><h4>SECURITAS <br>FINANCIAL</h4></div>
+		<div class="logo"><a href="./index.html"><h4>SECURITAS <br>FINANCIAL</h4></a></div>
 		<img src="./imagenes/logo.png" alt="logo">
 		<nav >
-			<a class="logo" href="index.html"> Iniciar sesión </a>
+			<a class="logo" href="inicia"> Iniciar sesión </a>
 			<a class="logo" href="registrarse.html"> Registrarse </a>
 		  </nav>
 	</header>
