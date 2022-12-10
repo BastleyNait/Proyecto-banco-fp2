@@ -287,22 +287,22 @@ section {
 }
 
 #sec1 {
-    background-image: url(/imagenes/section1.svg);
+    background-image: url(./imagenes/section1.svg);
     background-attachment: fixed;
 }
 
 #sec2 {
-    background-image: url(/imagenes/section2.svg);
+    background-image: url(./imagenes/section2.svg);
     background-attachment: fixed;
 }
 
 #sec3 {
-    background-image: url(/imagenes/section3.svg);
+    background-image: url(./imagenes/section3.svg);
     background-attachment: fixed;
 }
 
 #sec4 {
-    background-image: url(/imagenes/section4.svg);
+    background-image: url(./imagenes/section4.svg);
     background-position: center;
     background-repeat: no-repeat;
 }
