@@ -63,7 +63,7 @@ elsif($contra eq $contra2){
 	my $sth1 = $dbh->prepare("INSERT INTO cuentas(nombre, contra, Saldo) VALUES (?,?,?)");
 	$sth1->execute($nombre, $contra, 0);
 	$sth1->finish;
-	$info="<h2>Se creo la cuenta </h2>".$nombre;
+	$info='<div class="caja" id="inicio_sesion"><h2>Se creo la cuenta'.$nombre.' </h2></div>';
 }
 else{$info=$error."<br><br><br><br><h2>las contraseñas no conciden</h2>";}
 ##Nos desconectamos de la BD. Mostramos un mensaje en caso de error
@@ -83,15 +83,14 @@ print <<ENDHTML;
 	  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header class="barra_navegacion">
-      <div class="logo"><h4>SECURITAS <br>FINANCIAL</h4></div>
-      <img src="./imagenes/logo.png" alt="logo">
-      </div>
-        <nav >
-          <a class="logo" href="index.html"> Iniciar sesión </a>
-          <a class="logo" href="registrarse.html"> Registrarse </a>
-        </nav>
-    </header>
+	<header class="barra_navegacion">
+		<div class="logo"><a href="./index.html"><h4>SECURITAS <br>FINANCIAL</h4></a></div>
+		<img src="./imagenes/logo.png" alt="logo">
+		<nav >
+			<a class="logo" href="iniciar_sesion.html"> Iniciar sesión </a>
+			<a class="logo" href="registrarse.html"> Registrarse </a>
+		  </nav>
+	</header>
 <center>
 $info
 </center>

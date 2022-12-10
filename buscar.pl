@@ -33,31 +33,56 @@ $dbh-> disconnect ||
 warn "nFallo al desconectar.nError: $DBI::errstrn";
 ##confirma usuario
 my $error='
-	  <div class="separacion"></div>
-      <div class="caja" id="inicio_sesion">
+<div class="caja">
 		<!-- El formulario para mandar la validacion de datos -->
 		<div class="contenedor">
 			<img id="logo" src="./imagenes/logo.png" alt="logo">
-			<h2>Operaciones</h2>
+			<h2>Iniciar Sesión</h2>
 			<form method="POST" action="./buscar.pl">
+				<div class="input_box">
+					<input type="text" autocomplete="off" name="nombre"required/>
+					<span>Usuario</span>
+					<i></i>
+				</div>
+				<div class="input_box">
+					<input type="password" name="contra" required/>
+					<span>Contraseña</span>
+					<i></i>
+				</div>
+				<input type="submit" value="Ingresar" id="ingresar"/>  
+			  <!-- Aqui termina  validacion de datos-->
+			</form>	
+		</div>
+	  </div>
+	  <br><br><br><br><h2>El usuario y/o contraseña estan equivocadas</h2>';
+my $info;
+if($nombres eq ""){$info=$error;}
+elsif($contra eq $contra1){$info='
+<div class="caja" id="inicio_sesion">
+		<!-- El formulario para mandar la validacion de datos -->
+		<div class="contenedor">
+			<img id="logo" src="./imagenes/logo.png" alt="logo">
+			<h2>Operaciones Saldo '.$saldo.'</h2>
+			<form method="POST" action="./operaciones.pl">
 					<input type=text style="display:none" name=nombre value='.$nombres.'>
 					<input type=text style="display:none" name=contra value='.$contra.'>
 					<input type=text style="display:none" name=id value='.$id.'>
 					<input type=text style="display:none" name=saldo value='.$saldo.'>
 				<div class="input_box">
-					<input type=number autocomplete="off" step=0.1 min=0 name="nombre"required/>
+					<input type=number autocomplete="off" step=0.1 min=0 name="cantidad" required/>
 					<span>Cantidad</span>
 					<i></i>
 				</div>
 				<div class="input_box" >
 						<select name="operacion" class="input_box">
-						<option>Depósito</option>
+						<option>Deposito</option>
 						<option>Retiro</option>
 						</select>
 					<i></i>
 				</div>
 				<div class="input_box">
-					<button type="button" id="transferir" onclick="document.getElementById('demo').style.display='block'">Transferir</button>
+					<button type="button" onclick="document.getElementById('."'demo'".').style.display='."'block'".'">Transferir</button>
+					<i></i>
 				</div>
 				<input type="submit" value="Ejecutar" id="ingresar"/>  
 			  <!-- Aqui termina  validacion de datos-->
@@ -66,8 +91,8 @@ my $error='
 		<!-- Transferencia-->
 		<div class="contenedor" id="demo">
 			<img id="logo" src="./imagenes/logo.png" alt="logo">
-			<h2>Transferencia</h2>
-			<form method="POST" action="./buscar.pl">
+			<h2>Transferencia Saldo '.$saldo.'</h2>
+			<form method="POST" action="./transferencia.pl">
 					<input type=text style="display:none" name=nombre value='.$nombres.'>
 					<input type=text style="display:none" name=contra value='.$contra.'>
 					<input type=text style="display:none" name=id value='.$id.'>
@@ -78,12 +103,13 @@ my $error='
 					<i></i>
 				</div>	
 				<div class="input_box">
-					<input type=number autocomplete="off" step=0.1 min=0 name="nombre" required/>
+					<input type=number autocomplete="off" step=0.1 min=0 name="cantidad" required/>
 					<span>Cantidad</span>
-					<i></i >
+					<i></i>
 				</div>
-				<div class="input_box" id="transferir">
-					<button type="button" id="operaciones" onclick="document.getElementById('demo').style.display='none'">Operaciones</button>
+				<div class="input_box" >
+					<button type="button" onclick="document.getElementById('."'demo'".').style.display='."'none'".'">operaciones</button>
+					<i></i>
 				</div>
 				<input type="submit" value="Transferir" id="ingresar"/>  
 			  <!-- Aqui termina  validacion de datos-->
@@ -110,7 +136,7 @@ print <<ENDHTML;
 		<div class="logo"><a href="./index.html"><h4>SECURITAS <br>FINANCIAL</h4></a></div>
 		<img src="./imagenes/logo.png" alt="logo">
 		<nav >
-			<a class="logo" href="inicia"> Iniciar sesión </a>
+			<a class="logo" href="iniciar_sesion.html"> Iniciar sesión </a>
 			<a class="logo" href="registrarse.html"> Registrarse </a>
 		  </nav>
 	</header>

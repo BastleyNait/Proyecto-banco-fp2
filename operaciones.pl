@@ -14,17 +14,30 @@ my $base_datos="cuentas";
 my $usuario="alumno";  
 my $clave="pweb1";  
 my $driver="mysql";  
+
+##Conectamos con la BD. Si no podemos, mostramos un mensaje de error
+my $dbh = DBI-> connect ("dbi:$driver:database=$base_datos;
+host=$host", $usuario, $clave)
+|| die "nError al abrir la base datos: $DBI::errstrn";
+##operaciones
+my $saldoReal;
+my $sth = $dbh->prepare("SELECT * FROM cuentas WHERE (nombre=?)");
+$sth->execute($nombre);
+while( my @row = $sth->fetchrow_array ) {
+$saldoReal=$row[3];
+}
+$sth->finish;
 my $info='
 <div class="caja" id="inicio_sesion">
 		<!-- El formulario para mandar la validacion de datos -->
 		<div class="contenedor">
 			<img id="logo" src="./imagenes/logo.png" alt="logo">
-			<h2>Operaciones</h2>
+			<h2>Operaciones Saldo '.$saldoReal.'</h2>
 			<form method="POST" action="./operaciones.pl">
 					<input type=text style="display:none" name=nombre value='.$nombre.'>
 					<input type=text style="display:none" name=contra value='.$contra.'>
 					<input type=text style="display:none" name=id value='.$id.'>
-					<input type=text style="display:none" name=saldo value='.$saldo.'>
+					<input type=text style="display:none" name=saldo value='.$saldoReal.'>
 				<div class="input_box">
 					<input type=number autocomplete="off" step=0.1 min=0 name="cantidad" required/>
 					<span>Cantidad</span>
@@ -41,26 +54,23 @@ my $info='
 			  <!-- Aqui termina  validacion de datos-->
 			</form>	
 		</div></div>';
-##Conectamos con la BD. Si no podemos, mostramos un mensaje de error
-my $dbh = DBI-> connect ("dbi:$driver:database=$base_datos;
-host=$host", $usuario, $clave)
-|| die "nError al abrir la base datos: $DBI::errstrn";
-##operaciones
-my $retiro=$saldo-$cantidad;
+my $retiro=$saldoReal-$cantidad;
 if($operacion eq "Deposito"){
-	$saldo=$saldo+$cantidad ;
+	$saldo=$saldoReal+$cantidad ;
 	my $sth = $dbh->prepare("UPDATE cuentas SET Saldo=? where id=?");
 	$sth->execute($saldo,$id);
 	$sth->finish;
-	$info="<h2>Se completo el deposito</h2>";
+	$info='<div class="caja" id="inicio_sesion"><h2>Se completo el deposito de '.$cantidad.'</h2>
+	<h2>Saldo total '.$saldo.'</h2> </div>';
 }
 elsif(($operacion eq "Retiro") && ($retiro>=0) ) {
 	$saldo=$retiro;
 	my $sth = $dbh->prepare("UPDATE cuentas SET Saldo=? where id=?");
 	$sth->execute($saldo,$id);
 	$sth->finish;
-	$info="<h2>Se completo el retiro</h2>";}
-else {$info=$info."<br><br><br><br><h2>No se completo el retiro</h2>";}	
+	$info='<div class="caja" id="inicio_sesion"><h2>Se completo el retiro de '.$cantidad.'</h2>
+	<h2>Saldo total '.$retiro.'</h2> </div>';}
+else {$info=$info."<br><br><br><br><h2>No se completo el retiro<br>Saldo ".$saldoReal."</h2>";}	
 ##Nos desconectamos de la BD. Mostramos un mensaje en caso de error
 $dbh-> disconnect ||
 warn "nFallo al desconectar.nError: $DBI::errstrn";
@@ -79,10 +89,10 @@ print <<ENDHTML;
   </head>
   <body>
     <header class="barra_navegacion">
-		<div class="logo"><h4>SECURITAS <br>FINANCIAL</h4></div>
+		<div class="logo"><a href="./index.html"><h4>SECURITAS <br>FINANCIAL</h4></a></div>
 		<img src="./imagenes/logo.png" alt="logo">
 		<nav >
-			<a class="logo" href="index.html"> Iniciar sesión </a>
+			<a class="logo" href="iniciar_sesion.html"> Iniciar sesión </a>
 			<a class="logo" href="registrarse.html"> Registrarse </a>
 		  </nav>
 	</header>

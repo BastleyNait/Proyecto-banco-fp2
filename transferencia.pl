@@ -27,17 +27,30 @@ my $contra1R;
 my $saldoR;
 my $saldoReal;
 my $info;
+
+$sth->execute($nombreR);
+while( my @row = $sth->fetchrow_array ) {
+$idR=$row[0];
+$nombresR=$row[1];
+$contra1R=$row[2];
+$saldoR=$row[3];
+}
+$sth->execute($nombre);
+while( my @row = $sth->fetchrow_array ) {
+$saldoReal=$row[3];
+}
+$sth->finish;
 my $error=
 '<div class="caja" id="inicio_sesion">
 <!-- Transferencia-->
 		<div class="contenedor" id="demo">
 			<img id="logo" src="./imagenes/logo.png" alt="logo">
-			<h2>Transferencia</h2>
+			<h2>Transferencia Saldo '.$saldoReal.'</h2>
 			<form method="POST" action="./transferencia.pl">
 					<input type=text style="display:none" name=nombre value='.$nombre.'>
 					<input type=text style="display:none" name=contra value='.$contra.'>
 					<input type=text style="display:none" name=id value='.$id.'>
-					<input type=text style="display:none" name=saldo value='.$saldo.'>
+					<input type=text style="display:none" name=saldo value='.$saldoReal.'>
 				<div class="input_box">
 					<input type=text autocomplete="off" name="nombreRecibir" required/>
 					<span>Usuario a quien tranferir</span>
@@ -53,18 +66,6 @@ my $error=
 			</form>	
 		</div>
 	  </div>';
-$sth->execute($nombreR);
-while( my @row = $sth->fetchrow_array ) {
-$idR=$row[0];
-$nombresR=$row[1];
-$contra1R=$row[2];
-$saldoR=$row[3];
-}
-$sth->execute($nombre);
-while( my @row = $sth->fetchrow_array ) {
-$saldoReal=$row[3];
-}
-$sth->finish;
 my $diferencia=$saldoReal-$cantidad;
 if($nombresR eq ""){$info=$error."<br><br><br><br><h2>usario no exite</h2>";}
 elsif( $diferencia<0){$info=$error."<br><br><br><br><h2>no hay suficiente saldo <br> Su saldo es ".$saldoReal."</h2>";}
@@ -74,7 +75,8 @@ else{
 	$sth1->execute($total,$nombresR);
 	$sth1->execute($diferencia,$nombre);
 	$sth1->finish;
-	$info="<h2>Se completo la transferencia de ".$cantidad." a ".$nombresR."</h2>";
+	$info='<div class="caja" id="inicio_sesion"><h2>Se completo la transferencia de '.$cantidad.' a '.$nombresR.'</h2>
+	<h2>Saldo total '.$diferencia.'</h2> </div>';
 	}
 ##Nos desconectamos de la BD. Mostramos un mensaje en caso de error
 $dbh-> disconnect ||
@@ -94,10 +96,10 @@ print <<ENDHTML;
   </head>
   <body>
     <header class="barra_navegacion">
-		<div class="logo"><h4>SECURITAS <br>FINANCIAL</h4></div>
+		<div class="logo"><a href="./index.html"><h4>SECURITAS <br>FINANCIAL</h4></a></div>
 		<img src="./imagenes/logo.png" alt="logo">
 		<nav >
-			<a class="logo" href="index.html"> Iniciar sesión </a>
+			<a class="logo" href="iniciar_sesion.html"> Iniciar sesión </a>
 			<a class="logo" href="registrarse.html"> Registrarse </a>
 		  </nav>
 	</header>
