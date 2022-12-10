@@ -23,51 +23,55 @@
     <div class="separacion"></div>
     <section id="sec1">
         <div class="texto">
-            <h3>¿Quienes somos?</h3>
-            <p>Somos un grupo de alumnos de la Universidad nacional de San Agustin :</p>
-			<ol>
-			<li>Chirinos Negron Sebastian Arley</li>
-			<li>Choquecondo Aspilcueta Daniela Mabel</li>
-			<li>Cuadros Amanqui Joe Jhonny</li>
-			<li>Hilacondo Begazo Andre Jimmy</li>
-			<li>Viza Cuti Rodrigo Estefano</li>
-			</ol>
-            <a href="#sec2">¿Que es Securitas Financial?</a>
+            <h3>¿QUIÉNES SOMOS?</h3>
+            <p>Somos un grupo de alumnos de la Universidad nacional de San Agustín: </p>
+			<ul>
+			<li>Chirinos Negron, Sebastian Arley.</li>
+			<li>Choquecondo Aspilcueta, Daniela Mabel.</li>
+			<li>Cuadros Amanqui, Joe Jhonny.</li>
+			<li>Hilacondo Begazo, Andre Jimmy.</li>
+			<li>Viza Cuti Rodrigo, Estefano.</li>
+			</ul>
+            <a href="#sec2">¿Qué es Securitas Financial?</a>
         </div>
         <img class="img_index" src="./imagenes/img1.svg" alt="">
     </section>
     <section id="sec2">
         <img class="img_index" src="./imagenes/img2.svg" alt="">
         <div class="texto">
-            <h3>¿Que es Securitas Financial? </h3>
+            <h3>¿QUÉ ES SECURITAS FINANCIAL? </h3>
             <p>Es una base de datos  que fue creado con el proposito de hacer operaciones basicas como retirar, depositar y transferir a otra cuenta. 
-			Tambien puede crear nuevas cuentas bancarias. </p>
-			<p>La aplicacion de base de datos es variada y este es un claro ejemplo de este proyecto anterior mente mencionado</p>
-            <a href="#sec3">¿Porque en html?</a>
+			También puede crear nuevas cuentas bancarias. </p>
+			<p>La aplicación de base de datos es variada y este es un claro ejemplo de este proyecto anteriormente mencionado.</p>
+            <a href="#sec3">¿Por qué en html?</a>
         </div>
     </section>
     <section id="sec3">
         <div class="texto">
-            <h3>¿Porque en html?</h3>
-            <p>Porque es mas facil de usar se pueden en multipltaformas como es en la pc, en las tablets y celulares; no solo eso si no tambien en diferentes arquitecturas y sistemas operativos</p>
-			<p>Como lo es Windows, Linux entre otros siempre que tengan un navegador </p>
-			<p>Gracias por leer esto</p>
+            <h3>¿POR QUÉ EN HTML?</h3>
+            <p>Porque es mas fácil de usar se pueden en multipltaformas como es en la pc, en las tablets y celulares; no solo eso, si no tambien en diferentes arquitecturas y sistemas operativos.</p>
+			<p>Como lo es Windows, Linux entre otros siempre que tengan un navegador. </p>
+			<p>Gracias por su atención.</p>
 			<p id="horario"></p>
 			<script>
 				const time = new Date().getHours();
 				let horario;
 				if (time < 12) {
-				  horario = "Muy buenos dias  ";
+				  horario = "Muy buenos dias.  ";
 				} else if (time < 18) {
-				  horario = "Muy buenos tardes  ";
+				  horario = "Muy buenos tardes.  ";
 				} else {
-				  horario = "Muy buenas noches  ";
+				  horario = "Muy buenas noches.  ";
 			}
 			document.getElementById("horario").innerHTML = horario;
 			</script>
-			<a href="#sec1">¿Quienes somos?</a>
+			<a href="#sec4">Securitas Financial</a>
         </div>
         <img class="img_index" src="./imagenes/img3.svg" alt="">
     </section>
+    <section id="sec4">
+        <a href="#sec1" id="volver">VOLVER AL INICIO</a>
+    </section>
+
 </body>
 </html>
